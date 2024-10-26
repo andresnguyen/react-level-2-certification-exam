@@ -1,7 +1,5 @@
 # React Level 2 Certification
 
-**Project Goal:** Build a small quiz maker application that creates a 5-question quiz based on a trivia API.
-
 **Documentation URL:** [Project Document](https://bit.ly/react-cert-l2-quiz)
 
 ---
