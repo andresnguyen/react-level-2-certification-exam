@@ -1,50 +1,65 @@
-# React + TypeScript + Vite
+# React Level 2 Certification
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Project Goal:** Build a small quiz maker application that creates a 5-question quiz based on a trivia API.
 
-Currently, two official plugins are available:
+**Documentation URL:** [Project Document](https://bit.ly/react-cert-l2-quiz)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 1. Project Overview
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+This project requires creating a quiz application using React that fetches trivia questions from an external API.
 
-- Configure the top-level `parserOptions` property like this:
+## 2. Project Steps
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Step #1 - Implement Category and Difficulty Selection
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+1. **Trivia Categories**:
+   - Fetch categories from the API: [Get Categories API](https://opentdb.com/api_category.php).
+2. **Difficulty Levels**:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+   - Provide three difficulty options: _Easy_, _Medium_, and _Hard_.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+3. **UI Elements**:
+   - Use the following `id` attributes:
+     - `categorySelect` for the category dropdown.
+     - `difficultySelect` for the difficulty dropdown.
+     - `createBtn` for the quiz creation button.
+
+> **Note**: Styling is not a priority. The layout can vary as long as the app functions as specified.
+
+### Step #2 - Display a 5-Question Quiz
+
+1. **API Request**:
+
+   - Fetch 5 trivia questions based on the selected category and difficulty using the Open Trivia Database API.
+   - Example request for "Easy" film trivia:  
+     `https://opentdb.com/api.php?amount=5&category=11&difficulty=easy&type=multiple`
+
+2. **Display Answers**:
+
+   - Show answers in random order. Each answer should be a clickable button.
+   - Highlight selected answers and keep them highlighted.
+
+3. **Submit Button**:
+   - A "Submit" button should appear after all questions are answered.
+
+### Step #3 - Display Quiz Results
+
+1. **Result Component**:
+
+   - On submission, navigate to a new component (using React Router) to show results.
+   - Highlight answers:
+     - Green for correct answers.
+     - Red for incorrect answers.
+     - The correct answer is always displayed in green.
+
+2. **Scoring**:
+
+   - Show a color-coded score indicator based on correct answers:
+     - **Red**: 0–1 correct answers
+     - **Yellow**: 2–3 correct answers
+     - **Green**: 4–5 correct answers
+
+3. **Reset Button**:
+   - Include a button that allows users to create a new quiz from the result screen.
